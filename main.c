@@ -20,6 +20,6 @@ int main() {
     } else {
         printf("\nNão é possível adicionar a peça 'T' na posição (%d, %d)\n", x, y);
     }
-
+    printf("\n");
     return 0;
 } 
