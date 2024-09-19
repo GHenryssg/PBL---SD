@@ -14,7 +14,7 @@ int main() {
     
     // Inicializa o tabuleiro e a peça
     initBoard(board);
-    Piece piece = getPiece('O');
+    Piece piece = getRandomPiece();
 
     int x = 0, y = 3; // Posição inicial da peça no tabuleiro
 
@@ -55,7 +55,7 @@ int main() {
             
 
             // Reinicia com uma nova peça (substitua por peça aleatória se preferir)
-            piece = getPiece('O'); // Exemplo com nova peça
+            piece = getRandomPiece(); // Exemplo com nova peça
             x = 0;
             y = 3;
         }
