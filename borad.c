@@ -72,3 +72,27 @@ void placePiece(int board[ROWS][COLS], Piece *piece, int x, int y) {
         }
     }
 }
+
+//função para renderizar o tabuleiro com a peça e visualizar 
+void renderWithPiece(int board[ROWS][COLS], Piece *piece, int x, int y) {
+    int tempBoard[ROWS][COLS];
+
+    // Copia o tabuleiro original para um temporário
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            tempBoard[i][j] = board[i][j];
+        }
+    }
+
+    // Adiciona a peça temporária no tabuleiro temporário
+    for (int i = 0; i < PIECES_SIZE; i++) {
+        for (int j = 0; j < PIECES_SIZE; j++) {
+            if (piece->shape[i][j] == 1) {
+                tempBoard[x + i][y + j] = 1;
+            }
+        }
+    }
+
+    // Exibe o tabuleiro com a peça temporária
+    displayBoard(tempBoard);
+}

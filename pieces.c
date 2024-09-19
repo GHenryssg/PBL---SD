@@ -110,3 +110,10 @@ Piece getPiece (char type) {
     }
     return piece;
 }
+
+Piece getRandomPiece() {
+    int randomIndex = rand() % 7;  // Gera um número entre 0 e 6
+    char pieceTypes[7] = {'I', 'O', 'T', 'S', 'Z', 'J', 'L'};
+    
+    return getPiece(pieceTypes[randomIndex]);
+}
