@@ -1,12 +1,13 @@
 #include <stdio.h>
+#include <fcntl.h>
 #include <stdlib.h>
-#include <windows.h>
-#include <conio.h>
+#include <unistd.h>
+#include "control.c"
 #include "board.c"
 #include "pieces.c"
 
 
-int main() {
+int main() {   
     int board[ROWS][COLS];
 
     // inicializa a semente do gerador de números aleatórios
@@ -19,10 +20,11 @@ int main() {
     int x = 0, y = 3; // Posição inicial da peça no tabuleiro
 
     int end = 0;
+    
     // Loop principal do jogo
     while (end !=1 ) {
 
-        system("cls"); // Limpa a tela (no Windows)
+        system("clear"); // Limpa a tela (no Windows)
 
 
         // Renderiza o tabuleiro com a peça em sua posição atual
@@ -30,20 +32,18 @@ int main() {
         
         end = gameOver(board, &piece);
         
-        if (_kbhit()) { // verifica se uma tecla foi pressionada
-            char key = _getch(); // captura a tecla pressionada 
+        if (kbhit()) {
+            char ch = getchar(); // Captura a tecla pressionada
 
-            switch (key) {
+            switch (ch) {
                 case 'a':
                     moveLeft(board, &piece, x, &y);
                     break;
-                
                 case 'd':
                     moveRight(board, &piece, x, &y);
                     break;
             }
         }
-
         // Verifica se a peça pode descer
         if (canPlacePiece(board, &piece, x + 1, y)) {
             x++; // A peça desce se houver espaço
@@ -62,7 +62,7 @@ int main() {
     
         
 
-        Sleep(500); // Controla o intervalo de tempo entre as quedas (500 ms)
+        sleep(1); // Controla o intervalo de tempo entre as quedas (500 ms)
         
     }
     
