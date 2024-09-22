@@ -11,6 +11,24 @@
 #define I2C_BASE 0xFFC04000
 #define I2C_SPAN 0x00000100
 
+
+#define XL345_RANGE_16G 0b11
+#define XL345_FULL_RESOLUTION 0x08
+#define ADXL345_REG_DATA_FORMAT 0x31
+#define ADXL345_REG_BW_RATE 0x2C
+#define XL345_RATE_200 0x0B
+#define ADXL345_REG_THRESH_ACT 0x24
+#define ADXL345_REG_THRESH_INACT 0x25
+#define ADXL345_REG_TIME_INACT 0x26
+#define ADXL345_REG_ACT_INACT_CTL 0x27
+#define ADXL345_REG_INT_ENABLE 0x2E
+#define ADXL345_REG_POWER_CTL 0x2D
+#define ADXL345_REG_INT_SOURCE 0x30
+#define XL345_ACTIVITY 0x10
+#define XL345_INACTIVITY 0x08 
+#define XL345_STANDBY 0x00
+#define XL345_MEASURE 0x08
+
 // address of registers
 #define I2C_CON 0x0
 #define I2C_TAR 0x4
@@ -43,8 +61,18 @@ I2C_Registers map_i2c(int fd);
 
 void unmap_i2c(void *i2c_virtual);
 
-void I2C0_Init(I2C_Register *regs);
+void I2C0_Init(I2C_Registers *regs);
 
-void Acelerometer_read_reg(I2C_Registers *regs, uint8_t address, uint8_t *value);
+void accelerometer_reg_multi_read(uint8_t address, uint8_t values[], uint8_t len, I2C_Registers *regs);
+
+void accelerometer_init(I2C_Registers regs);
+
+void accelerometer_reg_read(uint8_t address, uint8_t *value, I2C_Registers *regs);
+
+void accelerometer_reg_write(uint8_t address, uint8_t value, I2C_Registers *regs);
+
+void accelerometer_x_read(int16_t szData[2], I2C_Registers regs);
+
+int accelerometer_isDataReady(I2C_Registers regs);
 
 #endif

@@ -46,7 +46,7 @@ void unmap_i2c(void *i2c_virtual) {
 }
 
 // I2C inicialization function 
-void I2C_Init(I2C_Registers *regs) {
+void I2C0_Init(I2C_Registers *regs) {
     // abort ongoing transmits and disable I2C0
     *regs->ic_enable = 2;
 
@@ -70,4 +70,75 @@ void I2C_Init(I2C_Registers *regs) {
     //wait until the controller is powered on 
     while ((*regs->ic_enable_status & 0x1) == 0) {}
 }
+
+void accelerometer_reg_read(uint8_t address, uint8_t *value, I2C_Registers *regs) {
+    *regs->i2c0_data_cmd = address + 0x400;
+
+    *regs->i2c0_data_cmd = 0x100;
+
+    while(*regs->ic_rxflr == 0) {}
+    *value = *regs->i2c0_data_cmd;
+}
+
+void accelerometer_reg_write( uint8_t address, uint8_t value, I2C_Registers *regs) {
+    *regs->i2c0_data_cmd = address + 0x400;
+
+    *regs->i2c0_data_cmd = value;
+}
+
+void accelerometer_reg_multi_read(uint8_t address, uint8_t values[], uint8_t len, I2C_Registers *regs) {
+    *regs->i2c0_data_cmd = address + 0x400;
+
+    int i;
+    for (i = 0; i < len; i++) {
+        *(regs->i2c0_data_cmd) = 0x100;
+    }
+
+    int nth_byte = 0;
+    while (len) {
+        if (*(regs->ic_rxflr) > 0) {
+            values[nth_byte] = *(regs->i2c0_data_cmd);
+            nth_byte++;
+            len--;
+        }
+    }
+}
+
+void accelerometer_init(I2C_Registers regs) {
+    accelerometer_reg_write(ADXL345_REG_DATA_FORMAT, XL345_RANGE_16G | XL345_FULL_RESOLUTION, &regs);
+
+    accelerometer_reg_write(ADXL345_REG_BW_RATE, XL345_RATE_200, &regs);
+
+    accelerometer_reg_write(ADXL345_REG_THRESH_ACT, 0x04, &regs);
+    accelerometer_reg_write(ADXL345_REG_THRESH_INACT, 0x02, &regs);
+
+    accelerometer_reg_write(ADXL345_REG_TIME_INACT, 0x02, &regs);
+    accelerometer_reg_write(ADXL345_REG_ACT_INACT_CTL, 0xFF, &regs);
+
+    accelerometer_reg_write(ADXL345_REG_INT_ENABLE, XL345_ACTIVITY | XL345_INACTIVITY, &regs);
+
+    accelerometer_reg_write(ADXL345_REG_POWER_CTL, XL345_STANDBY, &regs);
+
+    accelerometer_reg_write(ADXL345_REG_POWER_CTL, XL345_MEASURE, &regs);
+}
+
+void accelerometer_x_read(int16_t szData16[2], I2C_Registers regs) {
+    uint8_t szData8[2];
+    accelerometer_reg_multi_read(0x32, (uint8_t *)&szData8, sizeof(szData8), &regs);
+
+    szData16[0] = (szData8[1] << 8) | szData8[0];
+}
+
+int accelereometer_isDataReady(I2C_Registers regs) {
+    int bReady = 0;
+    uint8_t data8;
+
+    accelerometer_reg_read(ADXL345_REG_INT_SOURCE, &data8, &regs);
+    if(data8 & XL345_ACTIVITY) {
+        bReady = 1;
+    }
+    return bReady;
+}
+
+
 
