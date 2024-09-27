@@ -21,7 +21,6 @@ void inicializacao_accel();
 void* accel_working(void *args);
 void* button_threads(void *args);
 
-
 int main() {
 
     int board[ROWS][COLS];

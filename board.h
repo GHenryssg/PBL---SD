@@ -10,7 +10,6 @@
 #define PIXEL_ON 1
 #define PIXEL_OFF 0
 
-
 void initBoard(int board[ROWS][COLS]);
 
 void displayBoard(int board[ROWS][COLS]);

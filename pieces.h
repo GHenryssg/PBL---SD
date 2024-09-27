@@ -1,6 +1,7 @@
 #ifndef PICES_H
 #define PICES_H
 
+
 #define PIECES_SIZE 4
 #include <time.h>
 #include <stdlib.h>

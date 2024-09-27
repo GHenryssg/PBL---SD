@@ -9,7 +9,6 @@ int open_fd() {
 
     return fd;
 }
-
 // map I2C registers into virtual address space and return a struct with pointers
 I2C_Registers map_i2c(int fd) {
     I2C_Registers regs;

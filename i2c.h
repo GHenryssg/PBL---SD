@@ -10,8 +10,6 @@
 // i2c base address
 #define I2C_BASE 0xFFC04000
 #define I2C_SPAN 0x00000100
-
-
 #define XL345_RANGE_16G 0b11
 #define XL345_FULL_RESOLUTION 0x08
 #define ADXL345_REG_DATA_FORMAT 0x31

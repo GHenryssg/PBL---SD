@@ -2,7 +2,6 @@
 #include "board.h"
 
  
-
 void initBoard(int board[ROWS][COLS]) {
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++) {
