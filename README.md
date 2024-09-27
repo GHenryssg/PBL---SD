@@ -8,19 +8,19 @@
 <div align="justify"> 
 
 <div align="center">
- <a href="#-SOBRE-O-PROJETO"> SOBRE</a> •
- <a href="#-CARACTERÍSTICAS-DO-PROJETO"> CARACTERÍSTICAS</a> •
- <a href="#-REQUISITOS"> REQUISITOS</a> •
- <a href="#-HARDWARE-UTILIZADO"> HARDWARE</a> • 
- <a href="#-SOFTWARE-UTILIZADO"> SOFTWARE</a> • 
- <a href="#-DESENVOLVIMENTO-E-EXECUÇÃO-DO-PROJETO"> DESENVOLVIMENTO</a> • 
- <a href="#-FUNCIONAMENTO-DO-JOGO"> FUNCIONAMENTO</a> •
- <a href="#-SOLUÇÃO-DO-JOGO"> SOLUÇÃO</a> •
- <a href="#-BIBLIOTECAS-UTILIZADAS"> BIBLIOTECAS</a> •
- <a href="#-TESTES"> TESTES</a> •
- <a href="#-CONCLUSÃO"> CONCLUSÃO</a> •
- <a href="#-EXECUÇÃO-DO-PROJETO"> EXECUÇÃO</a> •
- <a href="#-DESENVOLVEDORES"> DESENVOLVEDORES</a>
+ <a href="#-sobre-o-projeto"> SOBRE</a> •
+ <a href="#-características-do-projeto"> CARACTERÍSTICAS</a> •
+ <a href="#-requisitos"> REQUISITOS</a> •
+ <a href="#-hardware-utilizado"> HARDWARE</a> • 
+ <a href="#-software-utilizado"> SOFTWARE</a> • 
+ <a href="#-desenvolvimento-e-execução-do-projeto"> DESENVOLVIMENTO</a> • 
+ <a href="#-funcionamento-do-jogo"> FUNCIONAMENTO</a> •
+ <a href="#-solução-do-jogo"> SOLUÇÃO</a> •
+ <a href="#-bibliotecas-utilizadas"> BIBLIOTECAS</a> •
+ <a href="#-testes"> TESTES</a> •
+ <a href="#-conclusão"> CONCLUSÃO</a> •
+ <a href="#-execução-do-projeto"> EXECUÇÃO</a> •
+ <a href="#-desenvolvedores"> DESENVOLVEDORES</a>
 </div>
 
 # SOBRE O PROJETO
