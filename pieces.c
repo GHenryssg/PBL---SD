@@ -30,9 +30,9 @@ int piece_Z[4][4] = {
 
 int piece_J[4][4] = {
     {0, 0, 0, 0},
-    {0, 0, 0, 1},
-    {0, 0, 0, 1},
-    {0, 0, 1, 1}
+    {0, 0, 1, 0},
+    {0, 0, 1, 0},
+    {0, 1, 1, 0}
 };
 
 int piece_L[4][4] = {
@@ -109,4 +109,11 @@ Piece getPiece (char type) {
             break;
     }
     return piece;
+}
+
+Piece getRandomPiece() {
+    int randomIndex = rand() % 7;  // Gera um número entre 0 e 6
+    char pieceTypes[7] = {'I', 'O', 'T', 'S', 'Z', 'J', 'L'};
+    
+    return getPiece(pieceTypes[randomIndex]);
 }
