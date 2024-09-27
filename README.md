@@ -2,7 +2,7 @@
 
 <div align="center">  
 
-#Projeto de Jogo Tetris em Linguagem C com acelerômetro
+# Projeto de Jogo Tetris em Linguagem C com acelerômetro
 
 ## Problema I - TEC499 - MI Sistemas Digitais - 2024.2
 <div align="justify"> 
@@ -264,7 +264,7 @@ Após clonar o repositório, entre no diretório do projeto com o comando:
   </tr>
 </table>
 
-#### [Voltar ao topo](#PBL---SD)
+#### [Voltar ao topo](#Projeto-de-Jogo-Tetris-em-Linguagem-C-com-acelerômetro)
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=00FFFF&height=120&section=footer"/>
 
