@@ -18,7 +18,7 @@
  <a href="#-TESTES"> TESTES</a> •
  <a href="#-CONCLUSÃO"> CONCLUSÃO</a> •
  <a href="#-EXECUÇÃO-DO-PROJETO"> EXECUÇÃO</a> •
- <a href="#-desenvolvedores"> Desenvolvedores</a>
+ <a href="#-DESENVOLVEDORES"> DESENVOLVEDORES</a>
 </div>
 
 ## ✔️ REQUISITOS
@@ -34,11 +34,11 @@
 ## HARDWARE UTILIZADO
 <div align="justify"> 
 
-kit de desenvolvimento DE1-SoC
+**kit de desenvolvimento DE1-SoC**
 
 A placa DE1-SoC é um kit de desenvolvimento que combina um processador ARM Cortex-A9 dual-core com um FPGA Cyclone V da Intel. Sendo ideal para o desenvolvimento de projetos de prototipagem e desenvolvimento de sistemas embarcados. A execução do jogo é acessada por meio de uma conexão SSH (via Ethernet) através do terminal de um computador.
 
-Acelerômetro ADXL345
+**Acelerômetro ADXL345**
 
 O ADXL345 é um acelerômetro digital de baixa potência e alta resolução, projetado para medir aceleração em três eixos (X, Y e Z). Ele pode detectar acelerações de até ±16g com uma precisão de 13 bits e é amplamente usado em dispositivos portáteis, sistemas de navegação, sensores de inclinação, e várias aplicações em robótica e sistemas embarcados.
 
@@ -47,34 +47,38 @@ O ADXL345 é um acelerômetro digital de baixa potência e alta resolução, pro
 ## SOFTWARE UTILIZADO
 <div align="justify"> 
 
-Linguagem C
+**Linguagem C**
+
 A linguagem C foi escolhida por sua eficiência, portabilidade e grande popularidade em sistemas embarcados. Sua sintaxe clara oferece controle direto sobre o hardware, ao mesmo tempo em que suas bibliotecas padrão e ferramentas possibilitam o desenvolvimento de código compacto e otimizado para dispositivos com restrições de recursos.
 
-Compilador GNU
+**Compilador GNU**
 
 O Compilador GNU (GCC - GNU Compiler Collection) é uma coleção de compiladores de código aberto que faz parte do projeto GNU, sendo amplamente utilizado para compilar programas em várias linguagens de programação, como C, C++, Fortran, Ada e outras. Ele é um dos compiladores mais populares e é essencial no desenvolvimento de software livre e projetos baseados em Linux.
 
 
-VSCODE
+**VSCODE**
 
 O Visual Studio Code (VSCode) é um editor de código-fonte leve, desenvolvido pela Microsoft, que oferece uma ampla gama de funcionalidades para programadores. Ele é gratuito, de código aberto e disponível para várias plataformas, incluindo Windows, macOS e Linux.
 
 ## DESENVOLVIMENTO E EXECUÇÃO DO PROJETO
 <div align="justify"> 
 
-Acelerômetro, Mapeamento de Memória e I2C
+**Acelerômetro, Mapeamento de Memória e I2C**
+
 O acelerômetro utilizado no jogo é um dispositivo ADXL345, que se comunica via o barramento I2C (Inter-Integrated Circuit). Para acessá-lo, o código implementa o mapeamento de memória e manipulação direta de registradores.
 Mapeamento de Memória: O sistema Linux oferece um dispositivo especial chamado /dev/mem, que permite que processos de usuário acessem endereços físicos de hardware. O código usa o mapeamento de memória através da função mmap(), transformando os registradores do controlador I2C em ponteiros acessíveis pelo programa. Isso permite a leitura e escrita direta nos registradores de controle do barramento I2C.
 Comunicação I2C: Após o mapeamento, as funções implementadas permitem a leitura e escrita nos registradores do acelerômetro. Para isso, a inicialização do controlador I2C é feita com a função I2C0_Init(), que configura o dispositivo para o modo mestre e define o endereço do acelerômetro. Funções como accelerometer_x_read() são usadas para capturar os valores do eixo X do acelerômetro, enquanto accelerometer_isDataReady() verifica se os dados estão prontos para leitura.
 Função no Jogo: O acelerômetro detecta a inclinação do dispositivo, e com base nesses valores, o jogo move as peças para a esquerda ou direita no tabuleiro, conforme os movimentos do jogador. Isso adiciona uma camada de interatividade física ao jogo.
 
-Threads
+**Threads**
+
 O jogo faz uso de threads para permitir a execução de tarefas concorrentes. Duas threads são criadas para gerenciar a leitura contínua do acelerômetro e o monitoramento dos botões do dispositivo.
 Thread do Acelerômetro: A função accel_working() é executada em uma thread separada. Essa thread continuamente verifica se há novos dados no acelerômetro e, se houver, lê os valores do eixo X para determinar se a peça deve se mover para a esquerda ou direita no tabuleiro. O uso de usleep() controla a frequência de leitura para evitar sobrecarga de processamento.
 Thread dos Botões: A função button_threads() também é executada em uma thread separada, que monitora o estado dos botões do hardware. Os botões têm diferentes funcionalidades: um deles pausa e retoma o jogo, e outro termina o jogo. Isso é feito através de uma leitura contínua dos botões usando a biblioteca KEY_read(), onde os eventos de pressionamento dos botões disparam as ações correspondentes no jogo.
 Sincronização com o Jogo: As threads permitem que o jogo continue a rodar independentemente, enquanto as entradas de controle (acelerômetro e botões) são monitoradas em segundo plano. Isso garante que a interação seja fluida e sem interrupções na lógica principal do jogo.
 
-Tabuleiro e Peças no VGA
+**Tabuleiro e Peças no VGA**
+
 O jogo exibe o tabuleiro e as peças na tela usando um controlador VGA (Video Graphics Array).
 Tabuleiro: O tabuleiro é uma matriz bidimensional (int board[ROWS][COLS]) que representa as células onde as peças caem. A função initBoard() inicializa essa matriz, e cada célula pode estar vazia ou ocupada por parte de uma peça. O tabuleiro é renderizado na tela a cada iteração do loop principal do jogo, sendo atualizado conforme as peças se movem ou são fixadas.
 Peças: As peças do jogo são representadas por structs que contêm suas formas e posições. A função getRandomPiece() seleciona aleatoriamente uma nova peça para cair. A peça atual é renderizada na posição adequada no tabuleiro com a função renderWithPiece(), que combina o estado do tabuleiro com a peça ativa.
@@ -87,11 +91,11 @@ Pontuação e Fim de Jogo: A pontuação é exibida na tela junto com o tabuleir
 
 As peças são formadas por quatro blocos quadrados. Existem sete formas básicas de peças, cada uma com uma letra correspondente.
 
-Início:
+**Início:**
+
 O jogo é iniciado em um tabuleiro que consiste em uma grade retangular (10 colunas x 20 linhas), o jogo começa com um espaço vazio e, gradualmente, os tetriminos começam a cair do topo da tela.
 
-Mecânica de Jogo:
-Mecânica de Jogo:
+**Mecânica de Jogo:**
 
 As peças caem de uma posição inicial no topo do tabuleiro e continuam descendo até tocarem a linha mais baixa ou outra peça já posicionada. O diferencial na jogabilidade é o uso de um acelerômetro: ao inclinar a placa, o jogador pode mover as peças para a esquerda ou direita. O acelerômetro detecta o grau de inclinação, e, conforme os dados de inclinação são lidos, o movimento da peça no tabuleiro é ajustado.
 
@@ -99,10 +103,12 @@ Esse controle intuitivo permite que, inclinando a placa para a direita, a peça 
 
 Quando uma linha é completamente preenchida com blocos, ela desaparece, e as linhas acima descem uma posição, gerando pontos. O jogador ganha pontos ao remover linhas, e a habilidade de controlar a movimentação das peças com a inclinação da placa cria uma experiência de jogo mais dinâmica e interativa.
 
-Objetivo:
+**Objetivo:**
+
 O jogo tem como objetivo fazer a maior pontuação possível sem que as peças atinjam o topo do tabuleiro.
 
-Pausa e retomada 
+**Pausa e retomada**
+
 Botão de Pausa: Quando o jogador pressiona o botão correspondente, o jogo é pausado. Durante a pausa, o jogador não pode mover as peças, e uma mensagem indicando o estado de pausa aparece na tela. Pressionar o botão novamente retoma o jogo.
 Botão de Retomar: Esse botão é usado para retornar ao jogo após ele ter sido pausado. Ele faz com que o jogo volte à sua dinâmica normal, permitindo o controle das peças e a continuidade da partida.
 Botão de Encerramento: Pressionar este botão encerra o jogo imediatamente, interrompendo qualquer ação em andamento e levando ao fim da partida.
@@ -123,18 +129,20 @@ Após a atualização da posição da peça, é verificada a ocorrência de coli
 
 Nesta seção, serão abordadas as principais bibliotecas essenciais para o funcionamento completo do Tetris.
 
-intelfpgaup/video.h
+**intelfpgaup/video.h**
 
 A biblioteca VGA (Video Graphics Array) desempenha um papel fundamental na implementação do tetris, fornecendo acesso direto ao framebuffer da VGA para controle granular de cada pixel. Funções como video_pixel, video_box, e video_line permitem a manipulação precisa das coordenadas e cores, essenciais para renderizar as peças do tetris e o tabuleiro em tempo real. O uso de buffers duplos (video_show) permite alternar entre o buffer de desenho e o buffer de exibição, eliminando o tearing (descontinuidade na imagem) e garantindo atualizações suaves da tela. Essa abordagem reduz a latência entre os cálculos lógicos do jogo e a atualização visual, otimizando a jogabilidade.
 
-sys/mman
+**sys/mman**
+
 O uso de mmap é fundamental para acessar o acelerômetro na DE1-SoC, pois permite mapear o endereço físico do hardware (como o controlador I2C do acelerômetro) diretamente no espaço de memória do processo. Isso facilita a leitura e escrita de registradores do acelerômetro sem a necessidade de chamadas de sistema frequentes, reduzindo a latência e permitindo acesso direto e eficiente ao dispositivo.
 
-pthread
+**pthread**
 
 A biblioteca pthread é crucial para integrar a leitura dos dados do acelerômetro ao loop principal do tetris, permitindo que ambos funcionem de maneira paralela. Ao criar duas threads principais — uma para a leitura contínua dos dados do acelerômetro e outra para o loop principal do jogo — é possível evitar que a leitura dos sensores bloqueie ou atrase a execução do jogo. A thread dedicada ao acelerômetro interpreta os valores de inclinação para mover as peças do Tetris (esquerda, direita) sem interferir na renderização ou na lógica do jogo. Simultaneamente, a thread do loop principal mantém o fluxo do jogo, verificando colisões, atualizando o estado da tela VGA e respondendo rapidamente às ações do jogador. A sincronização entre as threads, usando mutexes ou variáveis de condição, garante que a comunicação seja correta e sem inconsistências. 
 
-intelfpgaup/KEY.h
+**intelfpgaup/KEY.h**
+
 A biblioteca de botões é essencial para a implementação de controles interativos permitindo ao jogador pausar e finalizar o jogo de forma. Através da integração dessa biblioteca, é possível mapear ações específicas a eventos de pressionamento de botões, oferecendo uma experiência de usuário mais rica e responsiva.
 Quando um botão de pausa é acionado, a biblioteca permite interromper temporariamente o loop principal do jogo, mantendo o estado atual da partida e congelando a lógica de movimento das peças.
 Além disso, a biblioteca de botões também pode implementar a funcionalidade de finalização do jogo.
@@ -143,21 +151,21 @@ Além disso, a biblioteca de botões também pode implementar a funcionalidade d
 ## TESTES
 <div align="justify"> 
 
-Tela do jogo
+**Tela do jogo**
 
 <p align="center">
   <img src="Downloads/tela-do-jogo.jpg" width = "400" />
 </p>
 
 
-Tela de Game over
+**Tela de Game over**
 
 <p align="center">
   <img src="Downloads/tela-de-game-over.jpg" width = "400" />
 </p>
 
 
-Tela do jogo pausado
+**Tela do jogo pausado**
 
 O teste foi realizado com sucesso e o jogo foi pausado após o botão responsável por pausar ser pressionado
 
@@ -166,7 +174,7 @@ O teste foi realizado com sucesso e o jogo foi pausado após o botão responsáv
 </p>
 
 
-Teste de despausar o jogo
+**Teste de despausar o jogo**
 
 O teste foi realizado com sucesso e o jogo retornou de onde parou logo após o botão de despausar ser pressionado
 Teste de eliminar linhas e pontuar
@@ -176,14 +184,14 @@ Teste de eliminar linhas e pontuar
 </p>
 
 
-Teste de Pontuação - Linha Completa
+**Teste de Pontuação - Linha Completa**
 
 <p align="center">
   <img src="Downloads/linha-completa.jpg" width = "400" />
 </p>
 
 
-Teste de Pontuação - Pontuação efetivada
+**Teste de Pontuação - Pontuação efetivada**
 
 O teste foi realizado com sucesso e a linha foi deletada e acrescentado a pontuação na variável de Score
 Teste perder o jogo
@@ -193,7 +201,7 @@ Teste perder o jogo
 </p>
 
 
-Teste de finalização da partida ao perder
+**Teste de finalização da partida ao perder**
 
 O teste foi realizado com sucesso e o jogo parou quando as peças chegaram ao topo do tabuleiro
 
@@ -231,7 +239,7 @@ Após clonar o repositório, entre no diretório do projeto com o comando:
     make
 
 
-## 💻 Desenvolvedores
+## 💻 DESENVOLVEDORES
 
 <div align="center">  
 
@@ -244,7 +252,7 @@ Após clonar o repositório, entre no diretório do projeto com o comando:
   </tr>
 </table>
 
-#### [Voltar ao topo](#Projeto-de-Jogo-Tetris-em-Linguagem-C-com-acelerômeetro)
+#### [Voltar ao topo](#PBL---SD)
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=00FFFF&height=120&section=footer"/>
 
