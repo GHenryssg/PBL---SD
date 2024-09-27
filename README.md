@@ -8,6 +8,8 @@
 <div align="justify"> 
 
 <div align="center">
+ <a href="#-SOBRE-O-PROJETO"> SOBRE</a> •
+ <a href="#-CARACTERÍSTICAS-DO-PROJETO"> CARACTERÍSTICAS</a> •
  <a href="#-REQUISITOS"> REQUISITOS</a> •
  <a href="#-HARDWARE-UTILIZADO"> HARDWARE</a> • 
  <a href="#-SOFTWARE-UTILIZADO"> SOFTWARE</a> • 
@@ -21,7 +23,17 @@
  <a href="#-DESENVOLVEDORES"> DESENVOLVEDORES</a>
 </div>
 
-## ✔️ REQUISITOS
+## SOBRE O PROJETO
+<div align="justify"> 
+ 
+Este projeto implementa o jogo Tetris utilizando a linguagem C e o acelerômetro ADXL-345 do kit de desenvolvimento DE1-SoC. O jogo é reproduzido em um monitor conectado via VGA, e a mecânica de controle é baseada na inclinação da placa, que determina o lado para o qual as peças se movem.
+
+## CARACTERÍSTICAS DO PROJETO
+<div align="justify"> 
+ 
+Linguagem: C Plataforma: DE1-SoC (com FPGA Cyclone V) Controle de Jogo: Acelerômetro ADXL-345 Saída de Vídeo: Conexão VGA
+
+## REQUISITOS
 <div align="justify"> 
 
 1. O código deve ser escrito em linguagem C;
@@ -161,7 +173,7 @@ Além disso, a biblioteca de botões também pode implementar a funcionalidade d
 **Tela de Game over**
 
 <p align="center">
-  <img src="Downloads/tela-de-game-over.jpg" width = "400" />
+  <img src="C:\Users\Henry\Documents\PBL - SISTEMAS DIGITAIS 2024.2\Images.jpg" width = "400" />
 </p>
 
 
