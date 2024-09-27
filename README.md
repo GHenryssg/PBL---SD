@@ -23,17 +23,17 @@
  <a href="#-DESENVOLVEDORES"> DESENVOLVEDORES</a>
 </div>
 
-## SOBRE O PROJETO
+# SOBRE O PROJETO
 <div align="justify"> 
  
 Este projeto implementa o jogo Tetris utilizando a linguagem C e o acelerômetro ADXL-345 do kit de desenvolvimento DE1-SoC. O jogo é reproduzido em um monitor conectado via VGA, e a mecânica de controle é baseada na inclinação da placa, que determina o lado para o qual as peças se movem.
 
-## CARACTERÍSTICAS DO PROJETO
+# CARACTERÍSTICAS DO PROJETO
 <div align="justify"> 
  
 Linguagem: C Plataforma: DE1-SoC (com FPGA Cyclone V) Controle de Jogo: Acelerômetro ADXL-345 Saída de Vídeo: Conexão VGA
 
-## REQUISITOS
+# REQUISITOS
 <div align="justify"> 
 
 1. O código deve ser escrito em linguagem C;
@@ -43,7 +43,7 @@ Linguagem: C Plataforma: DE1-SoC (com FPGA Cyclone V) Controle de Jogo: Acelerô
 5. O jogo deve pontuar e eliminar agrupamentos.
 
 
-## HARDWARE UTILIZADO
+# HARDWARE UTILIZADO
 <div align="justify"> 
 
 **kit de desenvolvimento DE1-SoC**
@@ -56,7 +56,7 @@ O ADXL345 é um acelerômetro digital de baixa potência e alta resolução, pro
 
 
 
-## SOFTWARE UTILIZADO
+# SOFTWARE UTILIZADO
 <div align="justify"> 
 
 **Linguagem C**
@@ -72,7 +72,7 @@ O Compilador GNU (GCC - GNU Compiler Collection) é uma coleção de compiladore
 
 O Visual Studio Code (VSCode) é um editor de código-fonte leve, desenvolvido pela Microsoft, que oferece uma ampla gama de funcionalidades para programadores. Ele é gratuito, de código aberto e disponível para várias plataformas, incluindo Windows, macOS e Linux.
 
-## DESENVOLVIMENTO E EXECUÇÃO DO PROJETO
+# DESENVOLVIMENTO E EXECUÇÃO DO PROJETO
 <div align="justify"> 
 
 **Acelerômetro, Mapeamento de Memória e I2C**
@@ -98,7 +98,7 @@ Exibição VGA: A comunicação com a tela VGA é feita através de um dispositi
 Pontuação e Fim de Jogo: A pontuação é exibida na tela junto com o tabuleiro. A cada vez que uma linha do tabuleiro é completada, ela é removida e a pontuação é atualizada usando a função clearLines(). Quando o jogo termina (se a peça alcançar o topo do tabuleiro), a mensagem "GAME OVER" é exibida e o jogo é finalizado.
 
 
-## FUNCIONAMENTO DO JOGO
+# FUNCIONAMENTO DO JOGO
 <div align="justify"> 
 
 As peças são formadas por quatro blocos quadrados. Existem sete formas básicas de peças, cada uma com uma letra correspondente.
@@ -126,7 +126,7 @@ Botão de Retomar: Esse botão é usado para retornar ao jogo após ele ter sido
 Botão de Encerramento: Pressionar este botão encerra o jogo imediatamente, interrompendo qualquer ação em andamento e levando ao fim da partida.
 
 
-## SOLUÇÃO DO JOGO
+# SOLUÇÃO DO JOGO
 <div align="justify"> 
  
 A implementação apresentada demonstra a capacidade de atender integralmente aos requisitos propostos. Preliminarmente ao laço principal de execução, é realizada uma verificação para confirmar o desejo do usuário em iniciar o jogo. Em seguida, são inicializados os periféricos necessários para o funcionamento do sistema, a saber: interface gráfica (VGA), acelerômetro e botões de controle.
@@ -136,7 +136,7 @@ Após a atualização da posição da peça, é verificada a ocorrência de coli
 
 
 
-## BIBLIOTECAS UTILIZADAS
+# BIBLIOTECAS UTILIZADAS
 <div align="justify"> 
 
 Nesta seção, serão abordadas as principais bibliotecas essenciais para o funcionamento completo do Tetris.
@@ -160,7 +160,7 @@ Quando um botão de pausa é acionado, a biblioteca permite interromper temporar
 Além disso, a biblioteca de botões também pode implementar a funcionalidade de finalização do jogo.
 
 
-## TESTES
+# TESTES
 <div align="justify"> 
 
 **Tela do jogo**
@@ -222,7 +222,7 @@ O teste foi realizado com sucesso e o jogo parou quando as peças chegaram ao to
 </p>
 
 
-## CONCLUSÃO
+# CONCLUSÃO
 <div align="justify">
  
 A presente implementação do clássico jogo Tetris, desenvolvida em linguagem C para a plataforma DE1-SoC, demonstra a viabilidade e eficácia da utilização de sistemas embarcados em aplicações de entretenimento. A arquitetura da placa DE1-SoC, aliada a drivers disponíveis, proporcionou o ambiente ideal para o desenvolvimento e execução do jogo, atendendo integralmente aos requisitos propostos.
@@ -230,7 +230,7 @@ A integração entre o software e o hardware da plataforma permitiu a utilizaç�
 Os testes realizados demonstraram a estabilidade e o desempenho satisfatório do sistema, garantindo a execução confiável do jogo em diferentes cenários. A arquitetura ARM da plataforma DE1-SoC, em conjunto com a linguagem C, proporcionou um ambiente de desenvolvimento eficiente, permitindo a implementação de algoritmos para a execução.
 Além de cumprir os objetivos específicos do projeto, a implementação do Tetris em plataforma DE1-SoC contribuiu significativamente para o desenvolvimento das competências dos envolvidos, aprofundando os conhecimentos em sistemas embarcados, arquitetura ARM e programação em linguagem C. A experiência adquirida neste projeto abre novas perspectivas para o desenvolvimento de sistemas digitais mais complexos e a criação de soluções inovadoras em diversos setores.
 
-## EXECUÇÃO DO PROJETO
+# EXECUÇÃO DO PROJETO
 <div align="justify">
 
 Siga os passos abaixo para baixar, compilar e executar o código do projeto em um dispositivo FPGA DE1-SoC.
@@ -251,7 +251,7 @@ Após clonar o repositório, entre no diretório do projeto com o comando:
     make
 
 
-## 💻 DESENVOLVEDORES
+# 💻 DESENVOLVEDORES
 
 <div align="center">  
 
