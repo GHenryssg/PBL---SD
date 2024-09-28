@@ -21,6 +21,7 @@ void inicializacao_accel();
 void* accel_working(void *args);
 void* button_threads(void *args);
 
+
 int main() {
 
     int board[ROWS][COLS];
@@ -50,10 +51,15 @@ int main() {
     int x = 0, y = 3; // Posição inicial da peça no tabuleiro
    
     while(iniciarjogo){
-        video_text(34, 1, "CLIQUE NO BOTAO PARA INICIAR O JOGO!!");
+        video_clear();
+        video_erase();
+        video_text(20, 30, "Clique no botao 1 para iniciar o jogo!");
+        video_show();
     }
-
     
+    video_clear();
+    video_erase();
+    video_show();
     while (endgame) {
         // Converte inteiro em string
         sprintf(pontos,"Score:%d",pontuacao);
@@ -79,8 +85,10 @@ int main() {
         // Verificação se o valor de X é maior, menor ou igual a 0
         if (X[0] > 20 && pausegame == 0) {
             moveRight(board, &piece, x, &y);
+            usleep(300000);
         } else if (X[0] < -20 && pausegame == 0) {
             moveLeft(board, &piece, x, &y);
+            usleep(300000);
         } 
 
         // Verifica se a peça pode descer
@@ -100,17 +108,17 @@ int main() {
         usleep(200000); // Controla o intervalo de tempo entre as quedas (50 ms)
     }
 
-    // Exibe a tela de Game Over
+    /// Exibe a tela de Game Over
+   
     video_clear();
     video_erase();
-    video_text(34, 30, "GAME OVER!");
+    video_text(40, 40, "GAME OVER!");
     video_show();
-    BUTTON = 0; // Mata o 
-    ACCEL = 0;
     //Encerrando as threads
+    BUTTON = 0;
+    ACCEL = 0;
     pthread_join(thread_accel, NULL);
     pthread_join(thread_button, NULL);
-
     return 0;
 }
 
@@ -126,7 +134,7 @@ void* accel_working(void *args){
         if(accelereometer_isDataReady(regs)) {
             accelerometer_x_read(X, regs); // lê os dados do eixo x
         }
-        usleep(200000);
+        usleep(300000);
     }
     return NULL;
 }
@@ -137,18 +145,18 @@ void* button_threads(void *args){
         int teste;
         KEY_read(&teste);
         switch (teste) {
-            case 1: // Pausa o jogo B0
-                pausegame = 1;
-                break;
-            case 2: // Retoma o jogo B1
-                pausegame = 0;
-                break;
-            case 4: // Acabar o jogo B2
-            	endgame = 0;
-                break;
-            case 8: // Iniciar o jogo B3
+            case 1: // inicia o jogo
                 iniciarjogo = 0;
                 break;
+            case 2: // pausa o jogo
+                if (pausegame == 0 && iniciarjogo == 0){
+                    pausegame = 1;
+                    break;
+                }
+                else{
+                    pausegame = 0;
+                    break;
+                }
             default:
                 break;
         }
