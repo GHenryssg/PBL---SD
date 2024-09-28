@@ -166,14 +166,14 @@ Além disso, a biblioteca de botões também pode implementar a funcionalidade d
 **Tela do jogo**
 
 <p align="center">
-  <img src="Downloads/tela-do-jogo.jpg" width = "400" />
+  <img src="Images/tela-do-jogo.jpg" width = "400" />
 </p>
 
 
 **Tela de Game over**
 
 <p align="center">
-  <img src="C:\Users\Henry\Documents\PBL - SISTEMAS DIGITAIS 2024.2\Images.jpg" width = "400" />
+  <img src="Images/tela-de-game-over.jpg" width = "400" />
 </p>
 
 
@@ -182,7 +182,7 @@ Além disso, a biblioteca de botões também pode implementar a funcionalidade d
 O teste foi realizado com sucesso e o jogo foi pausado após o botão responsável por pausar ser pressionado
 
 <p align="center">
-  <img src="Downloads/tela-pausada.jpg" width = "400" />
+  <img src="Images/tela-pausada.jpg" width = "400" />
 </p>
 
 
@@ -192,14 +192,14 @@ O teste foi realizado com sucesso e o jogo retornou de onde parou logo após o b
 Teste de eliminar linhas e pontuar
 
 <p align="center">
-  <img src="Downloads/jogo-despausado.jpg" width = "400" />
+  <img src="Images/jogo-despausado.jpg" width = "400" />
 </p>
 
 
 **Teste de Pontuação - Linha Completa**
 
 <p align="center">
-  <img src="Downloads/linha-completa.jpg" width = "400" />
+  <img src="Images/linha-completa.jpg" width = "400" />
 </p>
 
 
@@ -209,7 +209,7 @@ O teste foi realizado com sucesso e a linha foi deletada e acrescentado a pontua
 Teste perder o jogo
 
 <p align="center">
-  <img src="Downloads/pontuação.jpg" width = "400" />
+  <img src="Images/pontuação.jpg" width = "400" />
 </p>
 
 
@@ -218,7 +218,7 @@ Teste perder o jogo
 O teste foi realizado com sucesso e o jogo parou quando as peças chegaram ao topo do tabuleiro
 
 <p align="center">
-  <img src="Downloads/tela-de-game-over.jpg" width = "400" />
+  <img src="Images/tela-de-game-over.jpg" width = "400" />
 </p>
 
 
